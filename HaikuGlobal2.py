@@ -32,20 +32,19 @@ def openURL(query,place):
 		address = 'http://thesaurus.com/browse/' +str(query)
 	try:
 		page = urllib2.urlopen(address)
-		source = BeautifulSoup(page.read())
+		source = BeautifulSoup(page.read())#,'html.parser')
 		page.close()
 	except:
 		return '!Failure!'
 	return source
 
-
-
-
-
 ### DEFINE WORD
 def define(word):
 	soup = openURL(word,'dict')
-	define = clean(strip(str(soup.findAll('div', attrs={'class':'dndata'}))))
+	#define = clean(strip(
+	define = soup.findAll('div', {'class':'def-content'})#))
+	print define
+	define = clean(strip(str(define)))
 	return define
 
 
@@ -110,7 +109,6 @@ def checkLine(len):
 	verse = '' #text of line 
 	
 	for word in deff:
-		
 		csyll = syllable(word)
 		line += csyll
 		
@@ -179,6 +177,7 @@ if __name__ == '__main__':
 	
 	deff = define(poem).split(' ')
 	deff.pop()
+
 	
 	line1 = checkLine(5)
 	print(line1)
