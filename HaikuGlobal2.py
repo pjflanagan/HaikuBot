@@ -24,7 +24,7 @@ def clean(phrase):
 	phrase = filter(lambda x: x in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ \n', phrase)
 	return phrase
 
-###	 OPEN URL
+### OPEN URL
 def openURL(query,place):
 	if place == 'dict':
 		address = 'http://dictionary.reference.com/browse/' +str(query)
@@ -47,9 +47,6 @@ def define(word):
 	soup = openURL(word,'dict')
 	define = clean(strip(str(soup.findAll('div', attrs={'class':'dndata'}))))
 	return define
-
-
-
 
 
 ### GET SYLLABLES
@@ -148,7 +145,7 @@ def checkLine(len):
 			
 					elif cword < 0:
 						pass
-						print 'Sorry Bud'
+						print('Sorry Bud')
 						sys.exit()
 						#Here is where we would add
 						#The possibility that the synonym did not work:
@@ -178,20 +175,20 @@ if __name__ == '__main__':
 	
 	global deff
 	poem = raw_input('Write Poem For: ')
-	print '\n\t' +poem.title()
+	print('\n\t' +poem.title())
 	
 	deff = define(poem).split(' ')
 	deff.pop()
 	
 	line1 = checkLine(5)
-	print line1
+	print(line1)
 	line2 = checkLine(7)
-	print line2
+	print(line2)
 	line3 = checkLine(5)
-	print line3
+	print(line3)
 	
 	tweet = str(poem) +': ' +str(line1) +' / ' +str(line2) +' / ' +str(line3)	
-	print len(tweet)
+	print(len(tweet))
 	
 	#print ''
 	#print str(line1) +'\n' +str(line2) +'\n' +str(line3)

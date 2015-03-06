@@ -4,7 +4,7 @@ from BeautifulSoup import BeautifulSoup
 import re, sys
 import urllib2
 
-###	 OPEN URL
+### OPEN URL
 def openURL(query,place):
 	if place == 'dict':
 		address = 'http://dictionary.reference.com/browse/' +query
@@ -19,7 +19,7 @@ def openURL(query,place):
 def define(word):
 	soup = openURL(word,'dict')
 	deff = clean(soup.find('div', attrs={'class':'dndata'}).contents[0])
-	print deff
+	print(deff)
 	return deff
 
 ### CLEAN UP PHRASE
@@ -133,9 +133,9 @@ if __name__ == '__main__':
 				"""
 				cword += 1
 			except:
-				print 'Error'
+				print('Error')
 			
-	print line1 +'\n' +line2 +'\n' +line2
+	print(line1 +'\n' +line2 +'\n' +line2)
 	
 #the condition that
 #distinguishes animals
