@@ -42,7 +42,8 @@ def openURL(query,place):
 def define(word):
 	soup = openURL(word,'dict')
 	#define = clean(strip(
-	define = soup.findAll('div', {'class':'def-content'})#))
+	#define = soup.find_all('div', {'class':'def-content'})#))
+	define = soup.select('.def-content')
 	print define
 	define = clean(strip(str(define)))
 	return define
@@ -68,9 +69,6 @@ def syllable(word): ###(word,purpose)
 		number = len(sound.split(' '))
 		return number
 	"""
-
-
-
 
 
 ### GET SYNONYMS
